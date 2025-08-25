@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+include pyproject.toml
+include requirements.txt
+include .python-version
+recursive-include src/polyscan *.py
+recursive-exclude * __pycache__
+recursive-exclude * *.pyc

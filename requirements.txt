@@ -1,0 +1,8 @@
+# Core dependencies (optional for enhanced features)
+colorama>=0.4.4  # For colored terminal output
+psutil>=5.8.0    # For performance monitoring
+
+# Development dependencies (use with uv)
+# pytest>=7.0.0
+# black>=23.0.0  
+# ruff>=0.1.0

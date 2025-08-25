@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "polyscan"
+version = "1.0.0"
+description = "High-performance image polyglot security scanner for detecting embedded executables and suspicious content"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "petruknisme", email = "petruknisme@example.com"}]
+maintainers = [{name = "petruknisme", email = "petruknisme@example.com"}]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console", 
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+keywords = [
+    "security",
+    "forensics", 
+    "malware-analysis",
+    "polyglot",
+    "image-analysis",
+    "steganography",
+    "binary-analysis",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "colorama>=0.4.4",
+    "psutil>=5.8.0"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0.0", "black>=23.0.0", "ruff>=0.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/petruknisme/polyscan"
+Repository = "https://github.com/petruknisme/polyscan"
+Documentation = "https://github.com/petruknisme/polyscan#readme"
+"Bug Reports" = "https://github.com/petruknisme/polyscan/issues"
+
+[project.scripts]
+polyscan = "polyscan.cli:cli_main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/polyscan"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/README.md",
+    "/LICENSE",
+    "/pyproject.toml",
+]
+
+# uv compatibility
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "ANN", "S", "B", "A", "C4", "T20"]
+ignore = ["ANN101", "ANN102", "S101", "B008"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
